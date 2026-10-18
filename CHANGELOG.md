@@ -11,6 +11,7 @@
 - Feature: Builder effort set per round in the brief (`Effort: medium | high`) — medium for mechanical rounds, high for logic rounds
 - Feature: Advisor role (`ADVISOR.md`) on Fable for hard decisions — Architect writes a short decision memo (`handoff/decisions/D-[NN].md`), the Advisor answers in it; used for pre-mortems before risky steps, after two failed reviews of the same step, and for long-term architecture decisions
 - Improve: two-strikes rule — a step that fails review twice is re-planned before a third round
+- Feature: `## Models` section in `manifest.md` — one place for model and effort per role (defaults: Builder sonnet with per-round effort, Reviewer opus/high, Triage haiku/low, Advisor fable); setup offers the defaults
 
 ## v1.3.0 — 2026-06-04
 

@@ -30,7 +30,7 @@ Then introduce yourself and ask the three setup questions in a single message �
 > We recommend installing RTK. Here's why: every time your AI runs a bash command — `find`, `ls`, `grep` — the output gets dumped into context whether you need it or not. RTK compresses that output before it hits Claude, cutting token usage by 60–90% on those commands. It works silently in the background and pairs directly with Three Man Team's built-in token rules. Want to install it?
 >
 > **4. Agent models (optional)**
-> By default, Bob and Richard run on whatever model is active when I spin them up. If you want different models per agent — say, Opus for me, Sonnet for Bob, Haiku for Richard — tell me now and I'll note it in my briefing templates. Hank always runs on Haiku.
+> By default I run on the session model, and I spin up the others like this: **Richard on Opus with high effort** (reviews are short, so the extra thinking is cheap and catches problems a round earlier), **Bob on Sonnet** with the effort I set per round, **Hank on Haiku**, and an **Advisor on Fable** only for hard decisions. It's all in one place — the `Models` section of `manifest.md` — so you can change it any time. Want the defaults, or something different?
 >
 > I'll take care of all of this before we do anything else. Go ahead.
 
@@ -75,12 +75,12 @@ Then introduce yourself and ask the three setup questions in a single message �
 ---
 
 **If they want specific models per agent:**
-- Note the desired model for each agent as a comment in ARCHITECT.md's briefing sections — just above the spin-up prompt for Builder and Reviewer.
+- Write the desired model and effort for each role into the `## Models` section of `manifest.md` (see Generate manifest.md below). Do not hard-code models into the briefing prompts.
 - When spinning up agents via the Agent tool, pass the `model` parameter. Use the aliases `opus` (most capable for daily work), `sonnet` (balanced), `haiku` (fastest, cheapest), `fable` (top tier — best as an advisor for hard decisions, not for long sessions). Aliases always point to the current version; pinned IDs go stale.
 - For manual paste: switch to the desired model before pasting the agent prompt.
 
 **If they don't care about model assignment:**
-- Keep going. All agents default to the current session model.
+- Keep going. Write the default `## Models` section into `manifest.md`.
 
 ---
 
@@ -133,6 +133,13 @@ handoff_dir: handoff/
 repo: [project repo URL, or blank if none]
 branch: main
 context_file: [confirmed context file name]
+
+## Models
+architect: opus
+builder: sonnet — effort per round in the brief
+reviewer: opus — effort high
+triage: haiku — effort low
+advisor: fable
 ```
 
 Then write `version_notified: [fetched version]` to `handoff/SESSION-CHECKPOINT.md` under `## Version Check`.

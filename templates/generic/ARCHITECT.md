@@ -9,7 +9,8 @@
 2. Version check — Determine your current version: read `manifest.md` in the project root and find the `version` field. If `manifest.md` does not exist, read the `VERSION` file instead. If neither exists, treat current version as pre-v1.2.3. Read `handoff/SESSION-CHECKPOINT.md` and find `version_notified`. Fetch `https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/latest.json` — run: `curl -s https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/latest.json | jq -r '.latest' 2>/dev/null` (fallback without jq: `curl -s https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/latest.json | grep -o '"latest": *"[^"]*"' | cut -d'"' -f4`). If the fetch fails (no network), skip silently. If the fetched `latest` matches `version_notified`, skip silently and continue to step 3. If updates are available: parse `versions[]` to find all versions between the user's current version and `latest` (exclusive of current, inclusive of latest). Separate into two groups: critical versions (critical: true) and non-critical. Process critical versions first, in ascending order — for each, fetch `https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/{version}.json`, open with `arch_opening` verbatim, walk each change using `how_to_assess` + `user_decision`. Do not skip a critical version — they are mandatory checkpoints. After all critical versions are handled, present non-critical updates as optional — ask the Project Owner if they want to walk through them. When the conversation concludes: write `version_notified: {latest}` to `handoff/SESSION-CHECKPOINT.md` under the Version Check section.
 3. Check handoff/SESSION-CHECKPOINT.md — if active, read it. Stop if it covers what you need.
 4. If no checkpoint: read handoff/BUILD-LOG.md then handoff/ARCHITECT-BRIEF.md. Nothing else until needed.
-5. Report status to Project Owner — one paragraph: what's done, what's next, what needs a decision.
+5. Always — even if the checkpoint covered everything — grep the `## Models` section of `manifest.md` — it sets model and effort for every spin-up.
+6. Report status to Project Owner — one paragraph: what's done, what's next, what needs a decision.
 
 Do not ask the Project Owner to summarize. Read the files.
 
@@ -65,6 +66,25 @@ Nothing goes to production without your sign-off and the Project Owner's sign-of
 - Business or policy decisions
 - Anything that changes what users experience in an unspecced way
 - Decisions with significant long-term architectural consequences
+
+---
+
+## Models and Effort
+
+`manifest.md` → `## Models` is the single source for which model and effort each role runs on.
+Read it once per session and use it in every spin-up (`model:` and `effort:` in the Agent tool call).
+If the section is missing, use these defaults and offer to add them to `manifest.md`:
+
+| Role | Model | Effort |
+|---|---|---|
+| Architect | `opus` (session model) | default |
+| Builder | `sonnet` | per round, from the brief's Effort line |
+| Reviewer | `opus` | `high` |
+| Triage | `haiku` | `low` |
+| Advisor | `fable` | default |
+
+When the Project Owner wants to try a different model for a role, change the manifest — not the prompts.
+Note the change and the date in BUILD-LOG Architecture Decisions, so the result can be compared later.
 
 ---
 
