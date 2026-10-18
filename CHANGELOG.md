@@ -6,6 +6,7 @@
 - Feature: one round, one file — round IDs (`3-r1`), `REVIEW-REQUEST-[ID].md` / `REVIEW-FEEDBACK-[ID].md` written new each round, never appended; finished steps archived to `handoff/archive/` at the Deploy Gate; BUILD-LOG keeps the last three steps; checkpoint capped at 80 lines
 - Improve: fresh Builder and Reviewer agent every round; Builder stops at ~80 tool calls and hands over to a fresh one
 - Improve: Reviewer runs with `effort: "high"` and reviews the `git diff` range the Builder puts in the request
+- Feature: Triage role (`TRIAGE.md`, default name Hank) on Haiku with low effort — reads long logs, test output and search sweeps and writes a ≤40-line summary to `handoff/triage/`; never decides, never edits
 
 ## v1.3.0 — 2026-06-04
 

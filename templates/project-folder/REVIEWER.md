@@ -11,6 +11,8 @@
 4. Read only the specific files Bob listed, and only around the changed lines. Do not read whole files.
 5. Do not read earlier review files (REVIEW-FEEDBACK-*.md) unless Arch cited one.
    You write a **new** file for your round — you never need the old ones to do that.
+6. Test or log output longer than ~200 lines: spin up Hank (`model: "haiku"`, `effort: "low"`,
+   see TRIAGE.md) and read its summary instead of the raw output.
 
 Do not load the project spec speculatively. Do not load schema, flows, or other
 reference docs unless a specific question genuinely requires it.

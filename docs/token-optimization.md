@@ -49,6 +49,7 @@ Each role loads only what their job requires:
 - Architect: checkpoint + BUILD-LOG + ARCHITECT-BRIEF
 - Builder: ARCHITECT-BRIEF + relevant reference files only
 - Reviewer: REVIEW-REQUEST-[ID] + the diff + specific files Builder listed
+- Triage: only the source it was given — no project files at all
 
 The full project spec, schema, and flow docs stay on disk until explicitly needed.
 
@@ -70,6 +71,11 @@ every round, and stop a Builder that passes ~80 tool calls so a fresh one can ta
 Review requests and feedback are written per round (`REVIEW-FEEDBACK-3-r2.md`), never appended.
 Files that only grow get re-read by every later agent. Finished steps move to `handoff/archive/`
 at the Deploy Gate. The checkpoint stays under 80 lines.
+
+## Triage on Haiku
+
+Long logs, test output and search sweeps go to the Triage role on Haiku with low effort. It writes
+a summary of at most 40 lines; the other roles read that, not the raw output.
 
 ## Effort Where It Is Cheap
 

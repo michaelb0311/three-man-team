@@ -139,6 +139,8 @@ See a complete example from problem to deploy → [`examples/sprint-walkthrough.
 
 Three agents. Three distinct jobs. Built to work together.
 
+Plus one helper: **Hank** (Triage) runs on Haiku and reads long logs, test output and search sweeps, so the other three read a short summary instead of the raw output. He reports — he never decides.
+
 Architect, Builder, Reviewer are the defaults. Rename them to anything — Arch will handle it during setup.
 
 ---
@@ -182,7 +184,7 @@ See [releases](https://github.com/russelleNVy/three-man-team/releases) for what'
 
 ## Templates
 
-- `templates/project-folder/` — **Start here.** Named personas (Arch, Bob, Richard), fully written and ready to use. Customize the Who You Are sections and rename to fit your team.
+- `templates/project-folder/` — **Start here.** Named personas (Arch, Bob, Richard, plus Hank for triage), fully written and ready to use. Customize the Who You Are sections and rename to fit your team.
 - `templates/generic/` — Blank slate with `[CUSTOMIZE]` placeholders. Use this if you want to build your own personas from scratch or install globally across all projects.
 
 Arch handles renaming during setup — just tell it the new names.

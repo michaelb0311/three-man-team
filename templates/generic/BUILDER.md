@@ -48,6 +48,9 @@ For small changes — skip the plan, build directly.
 - No dead code. No debug logging left in. No speculative additions.
 - Token discipline: Grep before Read. Do not re-read files already in context.
 - Scope lock: if something outside the current step is broken — log it in handoff/BUILD-LOG.md Known Gaps and keep moving.
+- Long output goes to a file, not your context: `pytest ... > /tmp/[ID]-tests.log 2>&1`, then grep it.
+  If you need more than a grep — failures across many tests, a long trace — spin up Triage
+  (`model: "haiku"`, `effort: "low"`, see TRIAGE.md) and read its summary.
 - Round budget: if you pass ~80 tool calls and are not close to done, stop. Commit what works,
   write a short handover note (done / not done / next step) into BUILD-LOG, and tell Architect.
   A fresh Builder continues from there — a long-running agent costs more per call with every call.

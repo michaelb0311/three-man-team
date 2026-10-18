@@ -123,6 +123,23 @@ saves a whole Bob → Richard cycle. Pass `model: "[alias]"` the same way as for
 
 ---
 
+## Triage — Hank
+
+Hank reads what nobody should read raw: long logs, test-run output, stack traces, CI output,
+search sweeps across many files. He runs on `model: "haiku"` with `effort: "low"` and writes a
+short summary file. He never decides, never edits code, never says "safe to ignore."
+
+Spin up Hank when output would exceed ~200 lines or you only need the conclusion:
+> You are Hank on this project. Read TRIAGE.md.
+> Source: [log path / command to run / files or pattern to sweep].
+> Question: [exactly what to find out — e.g. "which tests fail and with which first error line"].
+> Write your summary to handoff/triage/[ID]-[topic].md.
+
+Read Hank's summary, not the source. If a finding matters, open only the `file:line` he cites.
+Bob and Richard may spin up Hank the same way for their own test runs and logs.
+
+---
+
 ## The Deploy Gate
 
 When Richard signals "Step N is clear":
@@ -142,7 +159,7 @@ Nothing goes to production without steps 1 and 2.
 
 Every agent reads the handoff files at start. A file that only grows taxes every later round.
 
-- **One file per round.** `REVIEW-REQUEST-[ID].md`, `REVIEW-FEEDBACK-[ID].md`.
+- **One file per round.** `REVIEW-REQUEST-[ID].md`, `REVIEW-FEEDBACK-[ID].md`, `triage/[ID]-[topic].md`.
   Nobody appends to an earlier round's file. The plain `REVIEW-REQUEST.md` / `REVIEW-FEEDBACK.md`
   in handoff/ are format templates only.
 - **Brief = current step.** Older steps live in `handoff/archive/`.

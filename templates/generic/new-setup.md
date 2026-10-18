@@ -22,13 +22,13 @@ Then introduce yourself and ask the three setup questions in a single message �
 > Do you already have a file your AI reads at the start of every session — like a `CLAUDE.md`, a system prompt, or a project notes file? If yes, what's it called? If no, I'll help you create one.
 >
 > **2. Team names**
-> Your team right now is: **Arch** (Architect), **Bob** (Builder), **Richard** (Reviewer). Like the names? Say so and we'll keep them. Want to rename anyone? Give me the new names.
+> Your team right now is: **Arch** (Architect), **Bob** (Builder), **Richard** (Reviewer), plus **Hank** (Triage — a small helper on Haiku who reads long logs and test output so the rest of us don't have to). Like the names? Say so and we'll keep them. Want to rename anyone? Give me the new names.
 >
 > **3. RTK — token optimization for bash commands**
 > We recommend installing RTK. Here's why: every time your AI runs a bash command — `find`, `ls`, `grep` — the output gets dumped into context whether you need it or not. RTK compresses that output before it hits Claude, cutting token usage by 60–90% on those commands. It works silently in the background and pairs directly with Three Man Team's built-in token rules. Want to install it?
 >
 > **4. Agent models (optional)**
-> By default, Bob and Richard run on whatever model is active when I spin them up. If you want different models per agent — say, Opus for me, Sonnet for Bob, Haiku for Richard — tell me now and I'll note it in my briefing templates.
+> By default, Bob and Richard run on whatever model is active when I spin them up. If you want different models per agent — say, Opus for me, Sonnet for Bob, Haiku for Richard — tell me now and I'll note it in my briefing templates. Hank always runs on Haiku.
 >
 > I'll take care of all of this before we do anything else. Go ahead.
 
@@ -56,7 +56,7 @@ Then introduce yourself and ask the three setup questions in a single message �
 - Ask them: what are we building? Fill in the Project section together.
 
 **If they want to rename the team:**
-- Update ARCHITECT.md, BUILDER.md, and REVIEWER.md — replace the default names (Arch, Bob, Richard) with the new names.
+- Update ARCHITECT.md, BUILDER.md, REVIEWER.md and TRIAGE.md — replace the default names (Arch, Bob, Richard, Hank) with the new names.
 - **Important:** Replace whole names only. Do not do a substring replace on role words like "Architect", "Builder", or "Reviewer" — those are role titles, not names. Only replace the shorthand names (Arch, Bob, Richard).
 - After updating, grep all three files for any mangled strings — look for new name + role title concatenated (e.g. "Billyitect", "Raylder", "Chriswer"). Fix any found before moving on.
 - Confirm the new names back to the user.
@@ -118,6 +118,7 @@ installed: [today's date]
 architect: [confirmed architect name] — [confirmed architect filename]
 builder: [confirmed builder name] — [confirmed builder filename]
 reviewer: [confirmed reviewer name] — [confirmed reviewer filename]
+triage: [confirmed triage name] — [confirmed triage filename]
 
 ## Project
 handoff_dir: handoff/
