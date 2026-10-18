@@ -1,5 +1,6 @@
-# Review Feedback — Step [N]
+# Review Feedback — Step [N], round [ID]
 *Written by Reviewer. Read by Builder and Architect.*
+*Format template — do not write here. Each round writes a new file `REVIEW-FEEDBACK-[ID].md`, same ID as the request.*
 
 Date: [date]
 Ready for Builder: YES / NO

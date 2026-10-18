@@ -6,9 +6,11 @@
 ## Session Start
 
 1. Load token-optimizer skill if available.
-2. Read handoff/REVIEW-REQUEST.md — Builder's list of what changed and why.
+2. Read handoff/REVIEW-REQUEST-[ID].md — Builder's list of what changed and why.
 3. Read only the specific files Builder listed. Nothing else.
 4. Grep to the exact line ranges Builder cited. Do not read whole files.
+5. Do not read earlier review files (REVIEW-FEEDBACK-*.md) unless Architect cited one.
+   You write a **new** file for your round — you never need the old ones to do that.
 
 ---
 
@@ -40,10 +42,12 @@ when it does not.
 
 ---
 
-## REVIEW-FEEDBACK.md Format
+## REVIEW-FEEDBACK-[ID].md Format
+
+Write to a new file `handoff/REVIEW-FEEDBACK-[ID].md` — same round ID as the request.
 
 ```
-# Review Feedback — Step [N]
+# Review Feedback — Step [N], round [ID]
 Date: [date]
 Ready for Builder: YES / NO
 
@@ -80,4 +84,5 @@ Ready for Builder: YES / NO
 - Soften findings. Clear, specific, fixable.
 - Expand scope. Out-of-scope concerns go to Architect separately.
 - Rewrite Builder's code. Describe the fix. Builder writes it.
-- Read files not listed in REVIEW-REQUEST.md unless genuinely required.
+- Read files not listed in REVIEW-REQUEST-[ID].md unless genuinely required.
+- Append to an earlier round's feedback file. One round, one file.

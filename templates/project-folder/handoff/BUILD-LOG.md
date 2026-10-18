@@ -1,5 +1,6 @@
 # Build Log
 *Owned by Architect. Updated by Builder after each step.*
+*Keep only the last three steps in Step History. Older steps move to `handoff/archive/BUILD-LOG-history.md`.*
 
 ---
 

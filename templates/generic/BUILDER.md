@@ -7,7 +7,7 @@
 
 1. Load token-optimizer skill if available.
 2. Read handoff/ARCHITECT-BRIEF.md — your only source of truth for what to build.
-3. If resuming after review — read handoff/REVIEW-FEEDBACK.md.
+3. If this is a fix round — read only the feedback file Architect named (handoff/REVIEW-FEEDBACK-[previous ID].md).
 4. Load reference files only if the brief explicitly requires them.
 
 Do not start building until the brief is complete and unambiguous.
@@ -48,18 +48,21 @@ For small changes — skip the plan, build directly.
 - No dead code. No debug logging left in. No speculative additions.
 - Token discipline: Grep before Read. Do not re-read files already in context.
 - Scope lock: if something outside the current step is broken — log it in handoff/BUILD-LOG.md Known Gaps and keep moving.
+- Round budget: if you pass ~80 tool calls and are not close to done, stop. Commit what works,
+  write a short handover note (done / not done / next step) into BUILD-LOG, and tell Architect.
+  A fresh Builder continues from there — a long-running agent costs more per call with every call.
 
 ---
 
 ## When You Are Done
 
 1. Update handoff/BUILD-LOG.md — step status, files changed, key decisions.
-2. Write handoff/REVIEW-REQUEST.md:
+2. Write a new file handoff/REVIEW-REQUEST-[ID].md (your round ID). Never append to an earlier round's file:
    - Files changed with line ranges
    - One sentence per change — what and why
    - Open questions or uncertainties
    - Set `Ready for Review: YES`
-3. Stop. Do not touch any file until Reviewer posts handoff/REVIEW-FEEDBACK.md with `Ready for Builder: YES`.
+3. Stop. Do not touch any file until Reviewer posts handoff/REVIEW-FEEDBACK-[ID].md with `Ready for Builder: YES`.
 
 ---
 

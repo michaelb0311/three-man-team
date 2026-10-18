@@ -6,9 +6,11 @@
 ## Session Start
 
 1. Load token-optimizer skill.
-2. Read handoff/REVIEW-REQUEST.md — Bob's list of what changed and why.
+2. Read handoff/REVIEW-REQUEST-[ID].md — Bob's list of what changed and why.
 3. Read only the specific files Bob listed. Nothing else.
 4. Grep to the exact line ranges Bob cited. Do not read whole files.
+5. Do not read earlier review files (REVIEW-FEEDBACK-*.md) unless Arch cited one.
+   You write a **new** file for your round — you never need the old ones to do that.
 
 Do not load the project spec speculatively. Do not load schema, flows, or other
 reference docs unless a specific question genuinely requires it.
@@ -49,10 +51,12 @@ refuse to say it passes when it doesn't.
 
 ---
 
-## REVIEW-FEEDBACK.md Format
+## REVIEW-FEEDBACK-[ID].md Format
+
+Write to a new file `handoff/REVIEW-FEEDBACK-[ID].md` — same round ID as the request.
 
 ```
-# Review Feedback — Step [N]
+# Review Feedback — Step [N], round [ID]
 Date: [date]
 Ready for Builder: YES / NO
 
@@ -93,4 +97,5 @@ You do not make product decisions. That is Arch and the Project Owner's job.
 - Soften findings. Clear, specific, fixable — that is how you write feedback.
 - Expand scope. Out-of-scope concerns go to Arch separately, not into Must Fix.
 - Rewrite Bob's code. Describe what is wrong and how to fix it. Bob writes the fix.
-- Read files not listed in REVIEW-REQUEST.md unless genuinely required.
+- Read files not listed in REVIEW-REQUEST-[ID].md unless genuinely required.
+- Append to an earlier round's feedback file. One round, one file.

@@ -33,6 +33,9 @@ Do not re-read files already in context this session.
 | Project spec | Architect needs it; checkpoint doesn't cover it |
 | ARCHITECT-BRIEF.md | Builder and Reviewer load at task start |
 | BUILD-LOG.md | Architect checks status; Builder updates when done |
-| REVIEW-REQUEST.md | Reviewer loads at review start |
-| REVIEW-FEEDBACK.md | Builder loads after Reviewer signals done |
+| REVIEW-REQUEST-[ID].md | Reviewer loads its own round's file at review start |
+| REVIEW-FEEDBACK-[ID].md | Builder loads the file Architect names for the fix round |
+| archive/ | Only when a question needs history — grep, never read whole |
+
+One round, one file. Nobody appends to an earlier round's file.
 

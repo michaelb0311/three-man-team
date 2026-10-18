@@ -48,7 +48,7 @@ rule has the highest impact in active build sessions.
 Each role loads only what their job requires:
 - Architect: checkpoint + BUILD-LOG + ARCHITECT-BRIEF
 - Builder: ARCHITECT-BRIEF + relevant reference files only
-- Reviewer: REVIEW-REQUEST + specific files Builder listed
+- Reviewer: REVIEW-REQUEST-[ID] + specific files Builder listed
 
 The full project spec, schema, and flow docs stay on disk until explicitly needed.
 
@@ -57,6 +57,19 @@ The full project spec, schema, and flow docs stay on disk until explicitly neede
 SESSION-CHECKPOINT.md replaces reading BUILD-LOG and the full spec when it is current.
 Architect writes it at the end of every session. It should cover: where we stopped,
 what was decided, what is open, and the exact resume prompt.
+
+## Cost Scales With Turns × Context
+
+In long agent runs most of the bill is the context being re-read on every turn (cache reads).
+A resumed agent drags every earlier round along — measured on a real project, a Builder resumed
+four times cost about 6× a fresh one for the same work. Start a fresh Builder and Reviewer for
+every round, and stop a Builder that passes ~80 tool calls so a fresh one can take over.
+
+## One Round, One File
+
+Review requests and feedback are written per round (`REVIEW-FEEDBACK-3-r2.md`), never appended.
+Files that only grow get re-read by every later agent. Finished steps move to `handoff/archive/`
+at the Deploy Gate. The checkpoint stays under 80 lines.
 
 ## CLAUDE.md as Router
 

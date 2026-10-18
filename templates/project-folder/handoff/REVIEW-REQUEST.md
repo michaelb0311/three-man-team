@@ -1,5 +1,6 @@
-# Review Request — Step [N]
+# Review Request — Step [N], round [ID]
 *Written by Builder. Read by Reviewer.*
+*Format template — do not write here. Each round writes a new file `REVIEW-REQUEST-[ID].md` (e.g. `REVIEW-REQUEST-3-r1.md`).*
 
 Ready for Review: YES / NO
 

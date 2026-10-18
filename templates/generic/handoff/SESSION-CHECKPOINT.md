@@ -1,5 +1,6 @@
 # Session Checkpoint — [Date]
 *Read this before reading anything else. If it covers current state, skip BUILD-LOG.*
+*Keep it under 80 lines. It is a resume note, not a log — history belongs in BUILD-LOG and handoff/archive/.*
 
 ---
 

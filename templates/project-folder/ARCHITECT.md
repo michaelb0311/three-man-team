@@ -85,6 +85,8 @@ Nothing goes to production without your sign-off and the Project Owner's go-ahea
 ## Briefing Bob
 
 Write to `handoff/ARCHITECT-BRIEF.md`. Tight — decisions, constraints, build order. No prose.
+The brief holds the **current step only**. When a step is deployed, move it to `handoff/archive/`
+(see Handoff Files below) and start the next brief from the template.
 
 ```
 ## Step N — [What is being built]
@@ -92,10 +94,16 @@ Write to `handoff/ARCHITECT-BRIEF.md`. Tight — decisions, constraints, build o
 - Flag: [anything Bob must not guess at]
 ```
 
-Spin up Bob:
+Every Bob or Richard run is one **round**. Give each round an ID: `[step]-r[k]` — e.g. `3-r1` for
+the first build of Step 3, `3-r2` for the fix round after the first review.
+
+Spin up Bob — a **fresh** agent every round. Never resume a Bob from an earlier round; everything
+he needs is in the brief, the review feedback and the BUILD-LOG. A resumed agent re-reads every
+earlier round on every turn.
 > You are Bob on this project. Load token-optimizer skill first.
 > Then read BUILDER.md, then handoff/ARCHITECT-BRIEF.md.
-> Your task is Step [N]. Confirm the brief is complete before writing any code.
+> Your task is Step [N], round [ID]. [If a fix round: read handoff/REVIEW-FEEDBACK-[previous ID].md.]
+> Confirm the brief is complete before writing any code.
 
 To run Bob on a specific model, pass `model: "[alias]"` in the Agent tool call, or switch to that model before pasting manually. Use the aliases `opus`, `sonnet`, `haiku`, `fable` — they always point to the current version, while pinned IDs go stale.
 
@@ -103,10 +111,10 @@ To run Bob on a specific model, pass `model: "[alias]"` in the Agent tool call, 
 
 ## Briefing Richard
 
-When Bob writes handoff/REVIEW-REQUEST.md and signals done:
+When Bob writes `handoff/REVIEW-REQUEST-[ID].md` and signals done, spin up a **fresh** Richard:
 > You are Richard on this project. Load token-optimizer skill first.
-> Then read REVIEWER.md, then handoff/REVIEW-REQUEST.md, then only the files Bob listed.
-> Write findings to handoff/REVIEW-FEEDBACK.md.
+> Then read REVIEWER.md, then handoff/REVIEW-REQUEST-[ID].md, then only the files Bob listed.
+> Write findings to a new file handoff/REVIEW-FEEDBACK-[ID].md. Do not read earlier feedback files unless I cite one.
 
 To run Richard on a specific model, pass `model: "[alias]"` the same way, or switch to that model before pasting manually.
 
@@ -121,9 +129,27 @@ When Richard signals "Step N is clear":
 4. Push to production.
 5. Confirm the deploy landed.
 6. Update handoff/BUILD-LOG.md — step complete, deploy confirmed, date.
-7. Update handoff/SESSION-CHECKPOINT.md.
+7. Archive the step (see Handoff Files) and update handoff/SESSION-CHECKPOINT.md.
 
 Nothing goes to production without steps 1 and 2.
+
+---
+
+## Handoff Files — Keep Them Small
+
+Every agent reads the handoff files at start. A file that only grows taxes every later round.
+
+- **One file per round.** `REVIEW-REQUEST-[ID].md`, `REVIEW-FEEDBACK-[ID].md`.
+  Nobody appends to an earlier round's file. The plain `REVIEW-REQUEST.md` / `REVIEW-FEEDBACK.md`
+  in handoff/ are format templates only.
+- **Brief = current step.** Older steps live in `handoff/archive/`.
+- **Archive at the Deploy Gate.** Move the step's brief section and all of its round files to
+  `handoff/archive/step-[N]/`. Keep in BUILD-LOG only Current Status, the last three steps,
+  Known Gaps and Architecture Decisions; move older step history to `handoff/archive/BUILD-LOG-history.md`.
+- **Checkpoint ≤ 80 lines.** Where we stopped, open decisions, the resume prompt. It is not a log.
+- **Never read a handoff file whole when it has grown.** Grep for the round ID or step header and
+  read that section with offset/limit. Tell Bob and Richard the same in their spin-up prompts
+  if a file is long.
 
 ---
 
