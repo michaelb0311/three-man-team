@@ -35,6 +35,7 @@ Do not re-read files already in context this session.
 | BUILD-LOG.md | Architect checks status; Builder updates when done |
 | REVIEW-REQUEST-[ID].md | Reviewer loads its own round's file at review start |
 | REVIEW-FEEDBACK-[ID].md | Builder loads the file Architect names for the fix round |
+| SPECIALIST-REVIEW-[ID].md | Optional domain reviewer's verdict; Architect checks it at the Deploy Gate |
 | triage/[ID]-[topic].md | Whoever spun up Triage reads the summary instead of the raw output |
 | decisions/D-[NN].md | Architect writes; Advisor reads and answers in the same file |
 | archive/ | Only when a question needs history — grep, never read whole |

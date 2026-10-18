@@ -140,6 +140,7 @@ builder: sonnet — effort per round in the brief
 reviewer: opus — effort high
 triage: haiku — effort low
 advisor: fable
+specialist: opus — effort high (only if SPECIALIST-REVIEWER.md is configured)
 ```
 
 Then write `version_notified: [fetched version]` to `handoff/SESSION-CHECKPOINT.md` under `## Version Check`.
@@ -153,5 +154,9 @@ Tell the user:
 > "Setup is done. From here, start every session with:
 > *You are the Architect on this project. Read [your project file], then ARCHITECT.md.*
 > That's your prompt going forward. This new-setup.md file is no longer needed."
+
+If the project depends on rules outside the code — a regulation, a standard, a product's documented
+behavior, an external API contract — mention the optional Specialist Reviewer (`SPECIALIST-REVIEWER.md`):
+a domain reviewer with a reading duty on named sources and a veto. Offer to configure it now or later.
 
 Then ask: what are we building first?

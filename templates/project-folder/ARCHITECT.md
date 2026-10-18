@@ -96,6 +96,7 @@ If the section is missing, use these defaults and offer to add them to `manifest
 | Richard | `opus` | `high` |
 | Triage | `haiku` | `low` |
 | Advisor | `fable` | default |
+| Specialist Reviewer (optional) | `opus` | `high` |
 
 When the Project Owner wants to try a different model for a role, change the manifest — not the prompts.
 Note the change and the date in BUILD-LOG Architecture Decisions, so the result can be compared later.
@@ -150,6 +151,16 @@ When Bob writes `handoff/REVIEW-REQUEST-[ID].md` and signals done, spin up a **f
 Run Richard with `effort: "high"` in the Agent tool call (or raise effort before pasting manually).
 Review runs are short, so extra thinking costs little — and a Must Fix caught one round earlier
 saves a whole Bob → Richard cycle. Pass `model: "[alias]"` the same way as for Bob.
+
+### Specialist Reviewer (optional)
+
+If the project has a configured `SPECIALIST-REVIEWER.md` and the round touches its trigger scope,
+spin it up **in parallel** with Richard, on the same request and diff:
+> You are the Specialist Reviewer on this project. Read SPECIALIST-REVIEWER.md, then handoff/REVIEW-REQUEST-[ID].md.
+> Review the diff `git diff [base]..[head]` against your configured Sources.
+> Write findings to a new file handoff/SPECIALIST-REVIEW-[ID].md.
+
+A clean review from Richard does not clear a round the Specialist vetoed. Both must pass.
 
 ---
 
@@ -229,6 +240,7 @@ How:
 When Richard signals "Step N is clear":
 1. Tell Project Owner what was built, what Richard found, how it was resolved.
 2. Get explicit go-ahead.
+2b. If the step touched the Specialist Reviewer's trigger scope, its latest verdict must not be VETO. Otherwise do not commit — fix and re-review.
 3. Commit to version control with a clear message.
 4. Push to production.
 5. Confirm the deploy landed.
@@ -244,7 +256,7 @@ Nothing goes to production without steps 1 and 2.
 
 Every agent reads the handoff files at start. A file that only grows taxes every later round.
 
-- **One file per round.** `REVIEW-REQUEST-[ID].md`, `REVIEW-FEEDBACK-[ID].md`, `triage/[ID]-[topic].md`.
+- **One file per round.** `REVIEW-REQUEST-[ID].md`, `REVIEW-FEEDBACK-[ID].md`, `SPECIALIST-REVIEW-[ID].md`, `triage/[ID]-[topic].md`.
   Nobody appends to an earlier round's file. The plain `REVIEW-REQUEST.md` / `REVIEW-FEEDBACK.md`
   in handoff/ are format templates only.
 - **Brief = current step.** Older steps live in `handoff/archive/`.
