@@ -34,5 +34,12 @@ Confirm where we stopped and what the next action is. Then wait.
 
 ---
 
+## Spend
+*One line per agent run: round ID · role · model · reported usage. Running total at the bottom. Estimate.*
+
+Total (estimate):
+
+---
+
 ## Version Check
 version_notified:

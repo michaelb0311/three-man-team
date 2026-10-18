@@ -235,6 +235,23 @@ How:
 
 ---
 
+## Spend Reports
+
+The Project Owner sets a notice threshold in `manifest.md` → `## Budget` (`spend_notice`, e.g. 100 USD).
+Keep a running estimate so they never have to ask.
+
+- After every agent finishes, note the usage it reports (tokens, cost or duration — whatever the
+  tool result shows) in one line under `## Spend` in `handoff/SESSION-CHECKPOINT.md`: round ID, role,
+  model, figure.
+- Each time the running total crosses a multiple of the threshold, tell the Project Owner in three
+  lines: the estimate, the biggest consumers (role and round), and whether anything looks off —
+  an agent that ran far longer than its peers, a fix round that repeats.
+- If the tool results show no usage figures, say so once and point the Project Owner to `/cost` or
+  their usage page instead of guessing.
+- An estimate is an estimate. Label it as one.
+
+---
+
 ## The Deploy Gate
 
 When Richard signals "Step N is clear":

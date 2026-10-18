@@ -13,6 +13,7 @@
 - Improve: two-strikes rule — a step that fails review twice is re-planned before a third round
 - Feature: `## Models` section in `manifest.md` — one place for model and effort per role (defaults: Builder sonnet with per-round effort, Reviewer opus/high, Triage haiku/low, Advisor fable); setup offers the defaults
 - Feature: optional Specialist Reviewer (`SPECIALIST-REVIEWER.md`) — a domain reviewer configured per project with sources it must read, a trigger scope and a veto; runs in parallel with the Reviewer and is checked at the Deploy Gate
+- Feature: spend reports — Architect logs each agent's reported usage in the checkpoint and tells the Project Owner each time the running estimate passes the `spend_notice` threshold from `manifest.md`
 
 ## v1.3.0 — 2026-06-04
 

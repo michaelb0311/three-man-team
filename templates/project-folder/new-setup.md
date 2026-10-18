@@ -32,6 +32,9 @@ Then introduce yourself and ask the three setup questions in a single message �
 > **4. Agent models (optional)**
 > By default I run on the session model, and I spin up the others like this: **Richard on Opus with high effort** (reviews are short, so the extra thinking is cheap and catches problems a round earlier), **Bob on Sonnet** with the effort I set per round, **Hank on Haiku**, and an **Advisor on Fable** only for hard decisions. It's all in one place — the `Models` section of `manifest.md` — so you can change it any time. Want the defaults, or something different?
 >
+> **5. Spend notices (optional)**
+> Want me to tell you each time this project's agent spend passes a certain amount — say every 100 USD? Give me the amount, or say no.
+>
 > I'll take care of all of this before we do anything else. Go ahead.
 
 ---
@@ -141,6 +144,9 @@ reviewer: opus — effort high
 triage: haiku — effort low
 advisor: fable
 specialist: opus — effort high (only if SPECIALIST-REVIEWER.md is configured)
+
+## Budget
+spend_notice: [amount the user gave, or blank for no notices]
 ```
 
 Then write `version_notified: [fetched version]` to `handoff/SESSION-CHECKPOINT.md` under `## Version Check`.
