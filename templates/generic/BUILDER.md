@@ -58,6 +58,7 @@ For small changes — skip the plan, build directly.
 
 1. Update handoff/BUILD-LOG.md — step status, files changed, key decisions.
 2. Write a new file handoff/REVIEW-REQUEST-[ID].md (your round ID). Never append to an earlier round's file:
+   - Diff range for review: `[base]..[head]`
    - Files changed with line ranges
    - One sentence per change — what and why
    - Open questions or uncertainties

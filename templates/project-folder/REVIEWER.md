@@ -6,9 +6,9 @@
 ## Session Start
 
 1. Load token-optimizer skill.
-2. Read handoff/REVIEW-REQUEST-[ID].md — Bob's list of what changed and why.
-3. Read only the specific files Bob listed. Nothing else.
-4. Grep to the exact line ranges Bob cited. Do not read whole files.
+2. Read handoff/REVIEW-REQUEST-[ID].md — Bob's list of what changed and why, plus the diff range.
+3. Run `git diff [base]..[head]` from the request. The diff is your primary source of truth.
+4. Read only the specific files Bob listed, and only around the changed lines. Do not read whole files.
 5. Do not read earlier review files (REVIEW-FEEDBACK-*.md) unless Arch cited one.
    You write a **new** file for your round — you never need the old ones to do that.
 

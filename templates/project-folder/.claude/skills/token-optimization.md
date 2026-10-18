@@ -48,7 +48,7 @@ rule has the highest impact in active build sessions.
 Each role loads only what their job requires:
 - Architect: checkpoint + BUILD-LOG + ARCHITECT-BRIEF
 - Builder: ARCHITECT-BRIEF + relevant reference files only
-- Reviewer: REVIEW-REQUEST-[ID] + specific files Builder listed
+- Reviewer: REVIEW-REQUEST-[ID] + the diff + specific files Builder listed
 
 The full project spec, schema, and flow docs stay on disk until explicitly needed.
 
@@ -70,6 +70,12 @@ every round, and stop a Builder that passes ~80 tool calls so a fresh one can ta
 Review requests and feedback are written per round (`REVIEW-FEEDBACK-3-r2.md`), never appended.
 Files that only grow get re-read by every later agent. Finished steps move to `handoff/archive/`
 at the Deploy Gate. The checkpoint stays under 80 lines.
+
+## Effort Where It Is Cheap
+
+Raise effort on short, high-leverage runs — the Reviewer. Extra thinking there costs little and
+catches problems a round earlier. Do not raise it on long Builder runs, where every extra turn
+re-reads a large context.
 
 ## CLAUDE.md as Router
 

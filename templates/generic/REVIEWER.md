@@ -6,9 +6,9 @@
 ## Session Start
 
 1. Load token-optimizer skill if available.
-2. Read handoff/REVIEW-REQUEST-[ID].md — Builder's list of what changed and why.
-3. Read only the specific files Builder listed. Nothing else.
-4. Grep to the exact line ranges Builder cited. Do not read whole files.
+2. Read handoff/REVIEW-REQUEST-[ID].md — Builder's list of what changed and why, plus the diff range.
+3. Run `git diff [base]..[head]` from the request. The diff is your primary source of truth.
+4. Read only the specific files Builder listed, and only around the changed lines. Do not read whole files.
 5. Do not read earlier review files (REVIEW-FEEDBACK-*.md) unless Architect cited one.
    You write a **new** file for your round — you never need the old ones to do that.
 

@@ -99,10 +99,13 @@ To run Builder on a specific model, pass `model: "[alias]"` in the Agent tool ca
 
 When Builder writes `handoff/REVIEW-REQUEST-[ID].md` and signals done, spin up a **fresh** Reviewer:
 > You are [Reviewer name] on this project. Load token-optimizer skill first.
-> Then read REVIEWER.md, then handoff/REVIEW-REQUEST-[ID].md, then only the files Builder listed.
+> Then read REVIEWER.md, then handoff/REVIEW-REQUEST-[ID].md.
+> Review the diff `git diff [base]..[head]` — that is your primary source. Read only the files Builder listed.
 > Write findings to a new file handoff/REVIEW-FEEDBACK-[ID].md. Do not read earlier feedback files unless I cite one.
 
-To run Reviewer on a specific model, pass `model: "[alias]"` the same way, or switch to that model before pasting manually.
+Run Reviewer with `effort: "high"` in the Agent tool call (or raise effort before pasting manually).
+Review runs are short, so extra thinking costs little — and a Must Fix caught one round earlier
+saves a whole Builder → Reviewer cycle. Pass `model: "[alias]"` the same way as for Builder.
 
 ---
 
