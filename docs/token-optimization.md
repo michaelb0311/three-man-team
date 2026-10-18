@@ -90,6 +90,12 @@ The Architect proposes a fresh session after every Deploy Gate and `/compact` be
 Its context is rebuilt in full whenever the prompt cache expires — every wait on a long background
 run — so a lean Architect is the cheapest Architect.
 
+## Top Model as Advisor, Not as Session
+
+Bring the top model (Fable) in as a separate, one-off agent with a short decision memo — never by
+switching the Architect's session to it. A switch re-caches the whole session at the top price and
+bills every later turn at it. A memo-based Advisor call costs a fraction of that.
+
 ## CLAUDE.md as Router
 
 CLAUDE.md should never exceed ~50 lines. It is a routing file, not a knowledge base.

@@ -162,6 +162,64 @@ they decline, carry on without repeating it.
 
 ---
 
+## Advisor — Hard Decisions on Fable
+
+Some calls deserve the top model. Bring it in as a **separate, one-off agent** — never by switching
+this session with `/model`: the whole session context would be re-cached at the top model's price,
+and every later turn would be billed at it too.
+
+Bring in the Advisor:
+- **Pre-mortem** — before Builder starts a risky step (new architecture, data migration, concurrency,
+  anything paid or irreversible). Cheaper than a failed build plus its reviews.
+- **Two failed reviews** — when the same step fails review twice, do not start a third fix round.
+  Ask the Advisor whether the plan or the execution is wrong, then re-plan.
+- **Long-term architecture** — decisions the project will live with, before you take them to the Project Owner.
+
+How:
+1. Write a decision memo to `handoff/decisions/D-[NN].md` — one question, the options, the constraints,
+   and only the evidence the answer depends on (short excerpts or `file:line`). Keep it self-contained
+   and short — the Advisor reads the memo, not your session. Use this format:
+
+```
+# Decision Memo D-[NN] — [short title]
+Date: [date] · Asked by: [Architect name] · Step: [N]
+Trigger: pre-mortem / two failed reviews / architecture decision
+
+## Question
+[One question. If there are two, write two memos.]
+
+## Context
+[What the system does today, in as few lines as possible. Only what the decision depends on.]
+
+## Options
+1. [Option] — [what it means, cost, risk]
+2. [Option] — ...
+
+## Constraints
+- [Hard constraints: spec, platform, budget, Owner decisions already locked]
+
+## Evidence
+- [Short excerpts or `file:line` references the Advisor may open. Nothing else is in scope.]
+
+## What I Lean Towards (optional)
+[The Architect's current view, so the Advisor can push back on it.]
+
+---
+
+## Advisor Answer
+*Written by the Advisor below this line.*
+```
+2. Spin up the Advisor:
+> You are the Advisor on this project. Read ADVISOR.md, then handoff/decisions/D-[NN].md.
+> Answer in the memo. Open only the files the memo lists under Evidence.
+
+   Pass `model: "fable"`. One Advisor call per memo.
+3. Read the answer. Decide what is yours to decide; take product and business points to the Project
+   Owner with the Advisor's recommendation and your own view. Record the outcome in BUILD-LOG
+   Architecture Decisions.
+
+---
+
 ## The Deploy Gate
 
 When Reviewer signals "Step N is clear":
@@ -200,6 +258,7 @@ Every agent reads the handoff files at start. A file that only grows taxes every
 ## Anti-Drift Rules
 
 - One step at a time. Step N+1 does not start until Step N is deployed and logged.
+- Two strikes: if the same step fails review twice, stop and re-plan (see Advisor) before a third round.
 - Out-of-scope items → handoff/BUILD-LOG.md Known Gaps. Do not expand the step.
 - Update handoff/BUILD-LOG.md immediately when any decision is made — do not wait for deploy.
 - Grep before Read. Never read a whole file to find one thing.

@@ -69,7 +69,7 @@ else
   echo ""
   echo "  cp -r $SCRIPT_DIR/templates/project-folder/. $PROJECT_ROOT/"
   echo ""
-  echo "  This adds ARCHITECT.md, BUILDER.md, REVIEWER.md, TRIAGE.md, and the handoff/ folder"
+  echo "  This adds ARCHITECT.md, BUILDER.md, REVIEWER.md, TRIAGE.md, ADVISOR.md, and the handoff/ folder"
   echo "  to your project root. These are the files your agents read and write."
   echo ""
   echo "  Then navigate to your project root:"

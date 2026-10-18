@@ -9,6 +9,8 @@
 - Feature: Triage role (`TRIAGE.md`, default name Hank) on Haiku with low effort — reads long logs, test output and search sweeps and writes a ≤40-line summary to `handoff/triage/`; never decides, never edits
 - Feature: Architect proposes a fresh session after every Deploy Gate and `/compact` before long rounds, so the Project Owner doesn't have to remember (Context Hygiene section)
 - Feature: Builder effort set per round in the brief (`Effort: medium | high`) — medium for mechanical rounds, high for logic rounds
+- Feature: Advisor role (`ADVISOR.md`) on Fable for hard decisions — Architect writes a short decision memo (`handoff/decisions/D-[NN].md`), the Advisor answers in it; used for pre-mortems before risky steps, after two failed reviews of the same step, and for long-term architecture decisions
+- Improve: two-strikes rule — a step that fails review twice is re-planned before a third round
 
 ## v1.3.0 — 2026-06-04
 

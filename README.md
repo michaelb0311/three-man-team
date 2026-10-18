@@ -139,7 +139,7 @@ See a complete example from problem to deploy → [`examples/sprint-walkthrough.
 
 Three agents. Three distinct jobs. Built to work together.
 
-Plus one helper: **Hank** (Triage) runs on Haiku and reads long logs, test output and search sweeps, so the other three read a short summary instead of the raw output. He reports — he never decides.
+Plus one helper: **Hank** (Triage) runs on Haiku and reads long logs, test output and search sweeps, so the other three read a short summary instead of the raw output. He reports — he never decides. For the hard calls, Arch brings in an **Advisor** on Fable as a one-off agent with a short decision memo.
 
 Architect, Builder, Reviewer are the defaults. Rename them to anything — Arch will handle it during setup.
 
