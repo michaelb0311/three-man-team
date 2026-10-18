@@ -1,11 +1,16 @@
 {
-  "latest": "v1.3.0",
+  "latest": "v1.4.0",
   "versions": [
+    {
+      "version": "v1.4.0",
+      "released": "2026-10-18",
+      "critical": false
+    },
     {
       "version": "v1.3.0",
       "released": "2026-06-05",
       "critical": true,
-      "reason": "Introduces manifest.md — required for all future version checks"
+      "reason": "Introduces manifest.md \u2014 required for all future version checks"
     },
     {
       "version": "v1.2.5",

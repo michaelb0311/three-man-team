@@ -19,7 +19,7 @@
 - Improved: Arch reads your actual files before walking through any change — no more guessing at your setup.
 - Removed: `VERSION` file retired. Version lives in `manifest.md`.
 
-See [all releases →](https://github.com/russelleNVy/three-man-team/releases)
+See [all releases →](https://github.com/michaelb0311/three-man-team/releases)
 
 ---
 
@@ -72,7 +72,7 @@ One project, one install. Clone directly into your project folder.
 **Step 1 — Navigate to your project folder and clone**
 
 ```bash
-git clone https://github.com/russelleNVy/three-man-team.git .claude/skills/three-man-team
+git clone https://github.com/michaelb0311/three-man-team.git .claude/skills/three-man-team
 ```
 
 **Step 2 — Run setup and follow the instructions**
@@ -92,7 +92,7 @@ Install once, use in any project.
 **Step 1 — Clone to your global Claude skills folder**
 
 ```bash
-git clone https://github.com/russelleNVy/three-man-team.git ~/.claude/skills/three-man-team
+git clone https://github.com/michaelb0311/three-man-team.git ~/.claude/skills/three-man-team
 cd ~/.claude/skills/three-man-team && ./setup
 ```
 
@@ -178,7 +178,7 @@ Critical updates are mandatory checkpoints — they ship structural changes (lik
 
 You decide what to apply and when. Nothing changes without your confirmation.
 
-See [releases](https://github.com/russelleNVy/three-man-team/releases) for what's changed.
+See [releases](https://github.com/michaelb0311/three-man-team/releases) for what's changed.
 
 ---
 

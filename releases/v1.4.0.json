@@ -1,0 +1,98 @@
+{
+  "version": "v1.4.0",
+  "released": "2026-10-18",
+  "from_version": "v1.3.0",
+  "arch_opening": "There is an update available — version 1.4.0. It is about cost and focus: smaller handoff files, a cheap helper for logs, the right model and effort per role, and me reminding you when a fresh session pays off. None of it is mandatory. I will check your files and tell you what applies.",
+  "changes": [
+    {
+      "id": "model-aliases",
+      "type": "improvement",
+      "title": "Model aliases instead of pinned IDs",
+      "what_changed": "Briefings use the aliases opus, sonnet, haiku, fable instead of outdated pinned model IDs.",
+      "user_impact_plain": "Briefings use the aliases opus, sonnet, haiku, fable instead of outdated pinned model IDs.",
+      "how_to_assess": "Grep the role files for 'claude-opus-4' / 'claude-sonnet-4' / 'claude-haiku-4'.",
+      "user_decision": "Your role files pin old model IDs. Replace them with aliases?"
+    },
+    {
+      "id": "round-files",
+      "type": "improvement",
+      "title": "One handoff file per round",
+      "what_changed": "Each Builder/Reviewer round writes its own REVIEW-REQUEST-[ID].md and REVIEW-FEEDBACK-[ID].md. Finished steps move to handoff/archive/. Checkpoint stays under 80 lines. Fresh agent every round; Builder stops at ~80 tool calls.",
+      "user_impact_plain": "Each Builder/Reviewer round writes its own REVIEW-REQUEST-[ID].md and REVIEW-FEEDBACK-[ID].md. Finished steps move to handoff/archive/. Checkpoint stays under 80 lines. Fresh agent every round; Builder stops at ~80 tool calls.",
+      "how_to_assess": "Check the size of handoff/REVIEW-FEEDBACK.md, handoff/BUILD-LOG.md and handoff/SESSION-CHECKPOINT.md. Over ~300 lines (checkpoint: 80) means the change pays off now.",
+      "user_decision": "Want me to update the role files and do a one-time archive pass over handoff/?"
+    },
+    {
+      "id": "reviewer-effort",
+      "type": "improvement",
+      "title": "Reviewer on high effort, reviewing the diff",
+      "what_changed": "The Reviewer runs with effort high and reviews the git diff range from the request.",
+      "user_impact_plain": "The Reviewer runs with effort high and reviews the git diff range from the request.",
+      "how_to_assess": "Read the Reviewer spin-up prompt in the Architect role file.",
+      "user_decision": "Update the Reviewer briefing and REVIEWER.md?"
+    },
+    {
+      "id": "triage-role",
+      "type": "improvement",
+      "title": "Triage role (Hank) on Haiku",
+      "what_changed": "A cheap helper reads long logs, test output and search sweeps and writes a 40-line summary.",
+      "user_impact_plain": "A cheap helper reads long logs, test output and search sweeps and writes a 40-line summary.",
+      "how_to_assess": "Check whether TRIAGE.md exists in the project root.",
+      "user_decision": "Add TRIAGE.md and the Triage section to the Architect role file?"
+    },
+    {
+      "id": "context-hygiene",
+      "type": "improvement",
+      "title": "Architect proposes fresh session and /compact",
+      "what_changed": "After each Deploy Gate and before long rounds, the Architect proposes a fresh session or /compact.",
+      "user_impact_plain": "After each Deploy Gate and before long rounds, the Architect proposes a fresh session or /compact.",
+      "how_to_assess": "Check the Architect role file for a Context Hygiene section.",
+      "user_decision": "Add it?"
+    },
+    {
+      "id": "builder-effort",
+      "type": "improvement",
+      "title": "Builder effort per round",
+      "what_changed": "The brief carries an Effort line (medium for mechanical rounds, high for logic).",
+      "user_impact_plain": "The brief carries an Effort line (medium for mechanical rounds, high for logic).",
+      "how_to_assess": "Check the brief template for an Effort line.",
+      "user_decision": "Add it?"
+    },
+    {
+      "id": "advisor",
+      "type": "improvement",
+      "title": "Advisor on Fable with decision memos",
+      "what_changed": "For hard decisions the Architect writes a short memo and asks a one-off Advisor on Fable, instead of switching its own session. Two failed reviews of a step trigger a re-plan.",
+      "user_impact_plain": "For hard decisions the Architect writes a short memo and asks a one-off Advisor on Fable, instead of switching its own session. Two failed reviews of a step trigger a re-plan.",
+      "how_to_assess": "Check whether ADVISOR.md and handoff/decisions/ exist.",
+      "user_decision": "Add the Advisor role?"
+    },
+    {
+      "id": "models-in-manifest",
+      "type": "improvement",
+      "title": "Models and effort in manifest.md",
+      "what_changed": "manifest.md gets a Models section — one place for model and effort per role.",
+      "user_impact_plain": "manifest.md gets a Models section — one place for model and effort per role.",
+      "how_to_assess": "Read manifest.md for a '## Models' section.",
+      "user_decision": "Add the Models section with the defaults?"
+    },
+    {
+      "id": "specialist-reviewer",
+      "type": "improvement",
+      "title": "Optional Specialist Reviewer",
+      "what_changed": "A domain reviewer with a reading duty on named sources and a veto, for projects whose rules live outside the code.",
+      "user_impact_plain": "A domain reviewer with a reading duty on named sources and a veto, for projects whose rules live outside the code.",
+      "how_to_assess": "Ask whether the project depends on external rules (regulation, standard, documented product behavior, API contract).",
+      "user_decision": "Want to configure a Specialist Reviewer now, later, or not at all?"
+    },
+    {
+      "id": "spend-reports",
+      "type": "improvement",
+      "title": "Spend reports",
+      "what_changed": "The Architect logs reported agent usage and tells you when the running estimate passes a threshold from manifest.md.",
+      "user_impact_plain": "The Architect logs reported agent usage and tells you when the running estimate passes a threshold from manifest.md.",
+      "how_to_assess": "Read manifest.md for a '## Budget' section.",
+      "user_decision": "Want spend notices? Give me an amount."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v1.4.0 — 2026-10-18 (fork: michaelb0311/three-man-team)
 
 - Fix: outdated pinned model IDs (`claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5-…`) replaced with the aliases `opus`, `sonnet`, `haiku`, `fable`
 - Feature: one round, one file — round IDs (`3-r1`), `REVIEW-REQUEST-[ID].md` / `REVIEW-FEEDBACK-[ID].md` written new each round, never appended; finished steps archived to `handoff/archive/` at the Deploy Gate; BUILD-LOG keeps the last three steps; checkpoint capped at 80 lines

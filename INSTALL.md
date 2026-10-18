@@ -11,7 +11,7 @@ For the full quick start, see [README.md](README.md).
 Clone into your project folder, then run setup:
 
 ```bash
-git clone https://github.com/russelleNVy/three-man-team.git .claude/skills/three-man-team
+git clone https://github.com/michaelb0311/three-man-team.git .claude/skills/three-man-team
 cd .claude/skills/three-man-team && ./setup
 ```
 
@@ -24,7 +24,7 @@ Setup handles the rest — follow what it prints.
 Install once, use in any project:
 
 ```bash
-git clone https://github.com/russelleNVy/three-man-team.git ~/.claude/skills/three-man-team
+git clone https://github.com/michaelb0311/three-man-team.git ~/.claude/skills/three-man-team
 cd ~/.claude/skills/three-man-team && ./setup
 ```
 

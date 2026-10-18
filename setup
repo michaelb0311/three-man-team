@@ -57,7 +57,7 @@ if [ "$PROJECT_ROOT" = "/path/to/your/project" ]; then
   echo "  Arch will introduce the team, handle your project context file,"
   echo "  and give you the prompt to use every session going forward."
   echo ""
-  echo "  Full instructions: https://github.com/russelleNVy/three-man-team"
+  echo "  Full instructions: https://github.com/michaelb0311/three-man-team"
   echo ""
 else
   # Per-project install

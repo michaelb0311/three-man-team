@@ -113,9 +113,9 @@ If they don't want RTK — keep going. They can install it any time.
 
 Before closing setup, fetch the current version:
 ```bash
-curl -s https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/latest.json | jq -r '.version' 2>/dev/null
+curl -s https://raw.githubusercontent.com/michaelb0311/three-man-team/main/releases/latest.json | jq -r '.version' 2>/dev/null
 ```
-(Fallback without jq: `curl -s https://raw.githubusercontent.com/russelleNVy/three-man-team/main/releases/latest.json | grep -o '"version": *"[^"]*"' | cut -d'"' -f4`)
+(Fallback without jq: `curl -s https://raw.githubusercontent.com/michaelb0311/three-man-team/main/releases/latest.json | grep -o '"version": *"[^"]*"' | cut -d'"' -f4`)
 
 Create `manifest.md` in the project root with the values confirmed during setup:
 
