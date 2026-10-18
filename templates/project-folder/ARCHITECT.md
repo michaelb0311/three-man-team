@@ -90,9 +90,19 @@ The brief holds the **current step only**. When a step is deployed, move it to `
 
 ```
 ## Step N — [What is being built]
+Effort: [medium | high] — [one-line reason]
 - [Decision or instruction]
 - Flag: [anything Bob must not guess at]
 ```
+
+Set the **Effort** line for every round and pass it as `effort: "[level]"` in the Agent tool call:
+- `medium` — mechanical rounds: doc-only fixes, renames, moving code, re-running and re-stamping
+  measurements, applying Should Fix items that are already spelled out.
+- `high` — logic rounds: new behavior, concurrency, data integrity, security, anything where a
+  wrong guess costs a review round.
+
+Bob runs are long, and every extra turn re-reads the whole context — so do not default to the
+highest level. Raise it for the round that needs it, not for the whole project.
 
 Every Bob or Richard run is one **round**. Give each round an ID: `[step]-r[k]` — e.g. `3-r1` for
 the first build of Step 3, `3-r2` for the fix round after the first review.

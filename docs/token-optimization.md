@@ -80,8 +80,9 @@ a summary of at most 40 lines; the other roles read that, not the raw output.
 ## Effort Where It Is Cheap
 
 Raise effort on short, high-leverage runs — the Reviewer. Extra thinking there costs little and
-catches problems a round earlier. Do not raise it on long Builder runs, where every extra turn
-re-reads a large context.
+catches problems a round earlier. Builder runs are long and every extra turn re-reads a large
+context, so the Architect sets Builder effort per round in the brief: `medium` for mechanical
+rounds, `high` for logic rounds.
 
 ## Architect Context Hygiene
 

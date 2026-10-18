@@ -7,6 +7,8 @@
 
 ## Step [N] — [What is being built]
 
+**Builder effort:** medium / high — [one-line reason]
+
 ### Decisions
 - [Decision or constraint]
 - [Decision or constraint]
