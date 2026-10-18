@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Fix: outdated pinned model IDs (`claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5-…`) replaced with the aliases `opus`, `sonnet`, `haiku`, `fable`
+
 ## v1.3.0 — 2026-06-04
 
 - Feature: manifest.md introduced — new-setup.md now generates manifest.md at first-time setup capturing team names, role filenames, handoff dir, repo, and installed version
