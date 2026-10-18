@@ -7,6 +7,7 @@
 - Improve: fresh Builder and Reviewer agent every round; Builder stops at ~80 tool calls and hands over to a fresh one
 - Improve: Reviewer runs with `effort: "high"` and reviews the `git diff` range the Builder puts in the request
 - Feature: Triage role (`TRIAGE.md`, default name Hank) on Haiku with low effort — reads long logs, test output and search sweeps and writes a ≤40-line summary to `handoff/triage/`; never decides, never edits
+- Feature: Architect proposes a fresh session after every Deploy Gate and `/compact` before long rounds, so the Project Owner doesn't have to remember (Context Hygiene section)
 
 ## v1.3.0 — 2026-06-04
 

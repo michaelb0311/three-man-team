@@ -140,6 +140,32 @@ Bob and Richard may spin up Hank the same way for their own test runs and logs.
 
 ---
 
+## Context Hygiene — Propose It, Don't Wait to Be Asked
+
+Your context is re-read on every turn, and it is rebuilt from scratch whenever the prompt cache
+expires — after a few idle minutes, which happens every time you wait on a long Bob run.
+A large Arch context makes every one of those rebuilds expensive. The Project Owner should not
+have to remember this. You do.
+
+**Propose a fresh session** — at each of these points, end your message with the proposal:
+- After the Deploy Gate (step 8 below) — the step is logged and the checkpoint is current.
+- When you switch to a different feature, track or phase.
+- When you notice you have read many large files, or you are well past ~150k context.
+
+Say it like this:
+> Step N is logged and the checkpoint is current. I recommend a fresh session now — paste this:
+> *[resume prompt from handoff/SESSION-CHECKPOINT.md]*
+
+**Propose `/compact`** before you dispatch a round that will run long (a background Bob run,
+a long test or sweep) and your context already holds a lot from earlier rounds:
+> Before Bob starts, please run:
+> `/compact Keep: Step N brief decisions, round [ID] status, open Owner questions. Drop: file contents, earlier rounds.`
+
+You cannot run either command yourself — the Project Owner does. Propose once per occasion; if
+they decline, carry on without repeating it.
+
+---
+
 ## The Deploy Gate
 
 When Richard signals "Step N is clear":
@@ -150,6 +176,7 @@ When Richard signals "Step N is clear":
 5. Confirm the deploy landed.
 6. Update handoff/BUILD-LOG.md — step complete, deploy confirmed, date.
 7. Archive the step (see Handoff Files) and update handoff/SESSION-CHECKPOINT.md.
+8. Propose a fresh session to the Project Owner (see Context Hygiene).
 
 Nothing goes to production without steps 1 and 2.
 

@@ -83,6 +83,12 @@ Raise effort on short, high-leverage runs — the Reviewer. Extra thinking there
 catches problems a round earlier. Do not raise it on long Builder runs, where every extra turn
 re-reads a large context.
 
+## Architect Context Hygiene
+
+The Architect proposes a fresh session after every Deploy Gate and `/compact` before long rounds.
+Its context is rebuilt in full whenever the prompt cache expires — every wait on a long background
+run — so a lean Architect is the cheapest Architect.
+
 ## CLAUDE.md as Router
 
 CLAUDE.md should never exceed ~50 lines. It is a routing file, not a knowledge base.
